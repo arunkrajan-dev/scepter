@@ -1,0 +1,132 @@
+<template name="BillsPurchaseordersEdit">
+	<div class="container">
+		<div id="page_menu" class="pull-right">
+		</div>
+	</div>
+	{{> BillsPurchaseordersEditEditForm}}
+</template>
+
+<template name="BillsPurchaseordersEditEditForm">
+	<div id="bills-purchaseorders-edit-edit-form" class="container ">
+		<h4>
+			Edit purchaseorder
+		</h4>
+		<form class="form form_BillsPurchaseordersEditEditForm" role="form">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}
+
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-date">
+				<p class="input-field col s12">
+					<label class="{{#if (formatDate purchaseorder_details.date 'MM-DD-YYYY')}}active{{/if}}" for="field-date">
+						Created Date
+					</label>
+					<i class="material-icons prefix">
+						event_note
+					</i>
+					<input type="text" id="field-date" name="date" value="{{formatDate purchaseorder_details.date 'MM-DD-YYYY'}}"  autofocus="autofocus" required="required" data-type="date" data-format="MM-DD-YYYY">
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-supplier-id">
+				<select class="dropdown" name="supplierId"  required="required">
+					<option value="" disabled selected>						Choose Supplier</option>
+					{{#each supplier_list}}
+					<option value="{{_id}}" {{optionIsSelected ../purchaseorder_details.supplierId _id}}>						{{name}}</option>
+					{{/each}}
+				</select>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-shipto">
+				<p class="input-field col s12">
+					<textarea id="" class="materialize-textarea " name="shipto">{{purchaseorder_details.shipto}}</textarea>
+					<label class="{{#if purchaseorder_details.shipto}}active{{/if}}" for="">
+						Delivery Address
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-shipvia">
+				<p class="input-field col s12">
+					<input type="text" id="field-shipvia" name="shipvia" value="{{purchaseorder_details.shipvia}}" >
+					<label class="{{#if purchaseorder_details.shipvia}}active{{/if}}" for="field-shipvia">
+						Ship Via
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-term">
+				<p class="input-field col s12">
+					<input type="text" id="field-term" name="term" value="{{purchaseorder_details.term}}" >
+					<label class="{{#if purchaseorder_details.term}}active{{/if}}" for="field-term">
+						Term
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-expected-date">
+				<p class="input-field col s12">
+					<label class="{{#if (formatDate purchaseorder_details.expectedDate 'MM-DD-YYYY')}}active{{/if}}" for="field-expected-date">
+						Expected Date
+					</label>
+					<i class="material-icons prefix">
+						event_note
+					</i>
+					<input type="text" id="field-expected-date" name="expectedDate" value="{{formatDate purchaseorder_details.expectedDate 'MM-DD-YYYY'}}"  required="required" data-type="date" data-format="MM-DD-YYYY">
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-note">
+				<p class="input-field col s12">
+					<textarea id="" class="materialize-textarea " name="note">{{purchaseorder_details.note}}</textarea>
+					<label class="{{#if purchaseorder_details.note}}active{{/if}}" for="">
+						Special Instruction
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div>
+				<p class="input-field col s12 submit-div">
+					<button id="form-submit-button" class="btn waves-effect waves-light" type="submit">
+						<i class="material-icons right">
+							check
+						</i>
+						Save
+					</button>
+					<a href="#" id="form-cancel-button" class="btn">
+						Cancel
+					</a>
+				</p>
+			</div>
+		</form>
+	</div>
+</template>
+

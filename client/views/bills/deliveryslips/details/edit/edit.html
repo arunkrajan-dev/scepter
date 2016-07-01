@@ -1,0 +1,113 @@
+<template name="BillsDeliveryslipsDetailsEdit">
+	<div class="container">
+		<div id="page_menu" class="pull-right">
+		</div>
+	</div>
+	{{> BillsDeliveryslipsDetailsEditEditForm}}
+</template>
+
+<template name="BillsDeliveryslipsDetailsEditEditForm">
+	<div id="bills-deliveryslips-details-edit-edit-form" class="container ">
+		<h4>
+			Edit item
+		</h4>
+		<form class="form form_BillsDeliveryslipsDetailsEditEditForm" role="form">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}
+
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-product-id">
+				<select class="dropdown" name="productId"  required="required" autofocus="autofocus">
+					<option value="" disabled selected>						Choose Product</option>
+					{{#each product_list}}
+					<option value="{{_id}}" {{optionIsSelected ../deliveryslip_item.productId _id}}>						{{name}}</option>
+					{{/each}}
+				</select>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-unit">
+				<select class="dropdown" name="unit"  data-type="array">
+					<option value="" disabled selected>						Choose Type</option>
+					<option value="box" {{optionIsSelected deliveryslip_item.unit "box"}}>						Box</option>
+					<option value="piece" {{optionIsSelected deliveryslip_item.unit "piece"}}>						Piece</option>
+				</select>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-quantity">
+				<p class="input-field col s12">
+					<input type="text" id="field-quantity" name="quantity" value="{{deliveryslip_item.quantity}}"  required="required" data-type="float">
+					<label class="{{#if deliveryslip_item.quantity}}active{{/if}}" for="field-quantity">
+						Quantity
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-price">
+				<p class="input-field col s12">
+					<input type="text" id="field-price" name="price" value="{{deliveryslip_item.price}}"  required="required" data-type="float">
+					<label class="{{#if deliveryslip_item.price}}active{{/if}}" for="field-price">
+						Price
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-discount">
+				<p class="input-field col s12">
+					<input type="text" id="field-discount" name="discount" value="{{deliveryslip_item.discount}}"  required="required" data-type="float">
+					<label class="{{#if deliveryslip_item.discount}}active{{/if}}" for="field-discount">
+						Disc
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-net">
+				<p class="input-field col s12">
+					<input type="text" id="field-net" name="net" value="{{deliveryslip_item.net}}"  required="required" data-type="float">
+					<label class="{{#if deliveryslip_item.net}}active{{/if}}" for="field-net">
+						Net
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div>
+				<p class="input-field col s12 submit-div">
+					<button id="form-submit-button" class="btn waves-effect waves-light" type="submit">
+						<i class="material-icons right">
+							check
+						</i>
+						Save
+					</button>
+					<a href="#" id="form-cancel-button" class="btn">
+						Cancel
+					</a>
+				</p>
+			</div>
+		</form>
+	</div>
+</template>
+

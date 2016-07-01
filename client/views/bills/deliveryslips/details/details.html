@@ -1,0 +1,104 @@
+<template name="BillsDeliveryslipsDetails">
+	<div class="page-container">
+		<div class="row">
+			<div class="col-md-12" id="content">
+				<div class="row" id="title_row">
+					<div class="col-md-12">
+						<div id="page_menu" class="pull-right">
+						</div>
+					</div>
+				</div>
+				{{> BillsDeliveryslipsDetailsDetailsForm}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12" id="menu">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12" id="subcontent">
+				{{> yield region='BillsDeliveryslipsDetailsSubcontent'}}
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="BillsDeliveryslipsDetailsDetailsForm">
+	<div id="bills-deliveryslips-details-details-form" class="container ">
+		<div id="form-back-button" class="waves-effect waves-light btn">
+			<i class="material-icons left">
+				reply
+			</i>
+			Back
+		</div>
+		<h4>
+			deliveryslip #{{deliveryslip_details.deliveryslipNumber}}
+		</h4>
+		<form class="form form_BillsDeliveryslipsDetailsDetailsForm form-horizontal" role="form">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}
+
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-deliveryslip-number">
+				<p class="input-field col s12">
+					<input readonly id="field-deliveryslip-number" value="{{deliveryslip_details.deliveryslipNumber}}" type="text" >
+					<label class="{{#if deliveryslip_details.deliveryslipNumber}}active{{/if}}" for="field-deliveryslip-number">
+						Number
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-date">
+				<p class="input-field col s12">
+					<input readonly id="field-date" value="{{formatDate deliveryslip_details.date 'MM-DD-YYYY'}}" type="text" >
+					<label class="{{#if (formatDate deliveryslip_details.date 'MM-DD-YYYY')}}active{{/if}}" for="field-date">
+						Created Date
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-customer-name">
+				<p class="input-field col s12">
+					<input readonly id="field-customer-name" value="{{deliveryslip_details.customer.name}}" type="text" >
+					<label class="{{#if deliveryslip_details.customer.name}}active{{/if}}" for="field-customer-name">
+						Customer
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-customer-address">
+				<p class="input-field col s12">
+					<input readonly id="field-customer-address" value="{{deliveryslip_details.customer.address}}" type="text" >
+					<label class="{{#if deliveryslip_details.customer.address}}active{{/if}}" for="field-customer-address">
+						Customer Address
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-total-amount">
+				<p class="input-field col s12">
+					<input readonly id="field-total-amount" value="{{deliveryslip_details.totalAmount}}" type="text" >
+					<label class="{{#if deliveryslip_details.totalAmount}}active{{/if}}" for="field-total-amount">
+						Total
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-note">
+				<p class="input-field col s12">
+					<input readonly id="field-note" value="{{deliveryslip_details.note}}" type="text" >
+					<label class="{{#if deliveryslip_details.note}}active{{/if}}" for="field-note">
+						Note
+					</label>
+				</p>
+			</div>
+			<div>
+				<p class="input-field col s12 submit-div col-sm-9 col-sm-offset-3">
+				</p>
+			</div>
+		</form>
+	</div>
+</template>
+

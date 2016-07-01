@@ -1,0 +1,45 @@
+<template name="ContactsSuppliersDetails">
+	<div class="row" id="title_row">
+		<div class="col s12">
+			<h2 id="page_title" class="pull-left">
+				Supplier
+			</h2>
+			<div id="page_menu" class="pull-right">
+				<a href="#" id="page-close-button" class="btn btn-default pull-right" title="Close">
+					<span class="fa fa-times">
+					</span>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div id="menu" class="col s2">
+			<h2>
+			</h2>
+			{{> ContactsSuppliersDetailsTabMenu}}
+		</div>
+		<div id="subcontent" class="col s10">
+			{{> yield region='ContactsSuppliersDetailsSubcontent'}}
+		</div>
+	</div>
+</template>
+
+<template name="ContactsSuppliersDetailsTabMenu">
+	<ul id="menu-items" class="collection">
+		<li id="menu-item-simple" class="{{menuItemClass 'contacts.suppliers.details.summary'}}">
+			<a href="{{pathFor 'contacts.suppliers.details.summary' supplierId=this.params.supplierId}}">
+				<i class="material-icons left">
+				</i>
+				Summary
+			</a>
+		</li>
+		<li id="menu-item-simple" class="{{menuItemClass 'contacts.suppliers.details.purchaseorders'}}">
+			<a href="{{pathFor 'contacts.suppliers.details.purchaseorders' supplierId=this.params.supplierId}}">
+				<i class="material-icons left">
+				</i>
+				purchaseorder
+			</a>
+		</li>
+	</ul>
+</template>
+

@@ -1,0 +1,80 @@
+<template name="ContactsCustomersDetails">
+	<div class="row" id="title_row">
+		<div class="col s12">
+			<h2 id="page_title" class="pull-left">
+				{{this.params.type}} Details
+			</h2>
+			<div id="page_menu" class="pull-right">
+				<a href="#" id="page-close-button" class="btn btn-default pull-right" title="Close">
+					<span class="fa fa-times">
+					</span>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div id="menu" class="col s2">
+			<h2>
+			</h2>
+			{{> ContactsCustomersDetailsTabMenu}}
+		</div>
+		<div id="subcontent" class="col s10">
+			{{> yield region='ContactsCustomersDetailsSubcontent'}}
+		</div>
+	</div>
+</template>
+
+<template name="ContactsCustomersDetailsTabMenu">
+	<ul id="menu-items" class="collection">
+		<li id="menu-item-simple" class="{{menuItemClass 'contacts.customers.details.summary'}}">
+			<a href="{{pathFor 'contacts.customers.details.summary' customerId=this.params.customerId type=this.params.type}}">
+				<i class="material-icons left">
+				</i>
+				Summary
+			</a>
+		</li>
+		<li id="menu-item-simple" class="{{menuItemClass 'contacts.customers.details.logs'}}">
+			<a href="{{pathFor 'contacts.customers.details.logs' customerId=this.params.customerId type=this.params.type}}">
+				<i class="material-icons left">
+				</i>
+				Logs
+			</a>
+		</li>
+		<li id="menu-item-simple" class="{{menuItemClass 'contacts.customers.details.tasks'}}">
+			<a href="{{pathFor 'contacts.customers.details.tasks' customerId=this.params.customerId type=this.params.type}}">
+				<i class="material-icons left">
+				</i>
+				Tasks
+			</a>
+		</li>
+		<li id="menu-item-simple" class="{{menuItemClass 'contacts.customers.details.expenditures'}}">
+			<a href="{{pathFor 'contacts.customers.details.expenditures' customerId=this.params.customerId type=this.params.type}}">
+				<i class="material-icons left">
+				</i>
+				Expenditure
+			</a>
+		</li>
+		<li id="menu-item-simple" class="{{menuItemClass 'contacts.customers.details.invoices'}}">
+			<a href="{{pathFor 'contacts.customers.details.invoices' customerId=this.params.customerId type=this.params.type}}">
+				<i class="material-icons left">
+				</i>
+				Invoices
+			</a>
+		</li>
+		<li id="menu-item-simple" class="{{menuItemClass 'contacts.customers.details.quotations'}}">
+			<a href="{{pathFor 'contacts.customers.details.quotations' customerId=this.params.customerId type=this.params.type}}">
+				<i class="material-icons left">
+				</i>
+				Quotations
+			</a>
+		</li>
+		<li id="menu-item-simple" class="{{menuItemClass 'contacts.customers.details.deliveryslips'}}">
+			<a href="{{pathFor 'contacts.customers.details.deliveryslips' customerId=this.params.customerId type=this.params.type}}">
+				<i class="material-icons left">
+				</i>
+				Delivery Slips
+			</a>
+		</li>
+	</ul>
+</template>
+

@@ -1,0 +1,113 @@
+<template name="BillsDeliveryslipsDetailsInsert">
+	<div class="container">
+		<div id="page_menu" class="pull-right">
+		</div>
+	</div>
+	{{> BillsDeliveryslipsDetailsInsertInsertForm}}
+</template>
+
+<template name="BillsDeliveryslipsDetailsInsertInsertForm">
+	<div id="bills-deliveryslips-details-insert-insert-form" class="container ">
+		<h4>
+			Add item
+		</h4>
+		<form class="form form_BillsDeliveryslipsDetailsInsertInsertForm" role="form">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}
+
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-product-id">
+				<select class="dropdown" name="productId"  required="required" autofocus="autofocus">
+					<option value="" disabled selected>						Choose Product</option>
+					{{#each product_list}}
+					<option value="{{_id}}">						{{name}}</option>
+					{{/each}}
+				</select>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-unit">
+				<select class="dropdown" name="unit"  data-type="array">
+					<option value="" disabled selected>						Choose Type</option>
+					<option value="box" selected>						Box</option>
+					<option value="piece">						Piece</option>
+				</select>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-quantity">
+				<p class="input-field col s12">
+					<input type="text" id="field-quantity" name="quantity" value="1"  required="required" data-type="float">
+					<label class="{{#if '1'}}active{{/if}}" for="field-quantity">
+						Quantity
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-price">
+				<p class="input-field col s12">
+					<input type="text" id="field-price" name="price" value="0"  required="required" data-type="float">
+					<label class="{{#if '0'}}active{{/if}}" for="field-price">
+						Price
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-discount">
+				<p class="input-field col s12">
+					<input type="text" id="field-discount" name="discount" value="0"  required="required" data-type="float">
+					<label class="{{#if '0'}}active{{/if}}" for="field-discount">
+						Disc
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-net">
+				<p class="input-field col s12">
+					<input type="text" id="field-net" name="net" value="0"  required="required" data-type="float">
+					<label class="{{#if '0'}}active{{/if}}" for="field-net">
+						Net
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div>
+				<p class="input-field col s12 submit-div">
+					<button id="form-submit-button" class="btn waves-effect waves-light" type="submit">
+						<i class="material-icons right">
+							check
+						</i>
+						Save
+					</button>
+					<a href="#" id="form-cancel-button" class="btn">
+						Cancel
+					</a>
+				</p>
+			</div>
+		</form>
+	</div>
+</template>
+

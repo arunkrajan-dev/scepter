@@ -1,0 +1,238 @@
+<template name="TasksEdit">
+	<div class="container">
+		<div id="page_menu" class="pull-right">
+		</div>
+	</div>
+	{{> TasksEditEditForm}}
+</template>
+
+<template name="TasksEditEditForm">
+	<div id="tasks-edit-edit-form" class="container ">
+		<h4>
+			Edit Expediture
+		</h4>
+		<form class="form form_TasksEditEditForm" role="form">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}
+
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="inline fields form-group  field-type">
+				<label for="field-type">
+					Type
+				</label>
+				<div class="field">
+					<p class="ui radio checkbox">
+						<input id="form-general" type="radio" value="general" group="type" name="type" data-type="array" autofocus="autofocus" {{itemIsChecked task_details.type "general"}}>
+						<label for="form-general">
+							General
+						</label>
+					</p>
+				</div>
+				<div class="field">
+					<p class="ui radio checkbox">
+						<input id="form-service" type="radio" value="service" group="type" name="type" data-type="array" {{itemIsChecked task_details.type "service"}}>
+						<label for="form-service">
+							Service
+						</label>
+					</p>
+				</div>
+				<div class="field">
+					<p class="ui radio checkbox">
+						<input id="form-support" type="radio" value="support" group="type" name="type" data-type="array" {{itemIsChecked task_details.type "support"}}>
+						<label for="form-support">
+							Support
+						</label>
+					</p>
+				</div>
+				<div class="field">
+					<p class="ui radio checkbox">
+						<input id="form-response" type="radio" value="response" group="type" name="type" data-type="array" {{itemIsChecked task_details.type "response"}}>
+						<label for="form-response">
+							Response
+						</label>
+					</p>
+				</div>
+				<div class="field">
+					<p class="ui radio checkbox">
+						<input id="form-event" type="radio" value="event" group="type" name="type" data-type="array" {{itemIsChecked task_details.type "event"}}>
+						<label for="form-event">
+							Event
+						</label>
+					</p>
+				</div>
+				<div class="field">
+					<p class="ui radio checkbox">
+						<input id="form-meet" type="radio" value="meet" group="type" name="type" data-type="array" {{itemIsChecked task_details.type "meet"}}>
+						<label for="form-meet">
+							Meet
+						</label>
+					</p>
+				</div>
+				<div class="field">
+					<p class="ui radio checkbox">
+						<input id="form-call" type="radio" value="call" group="type" name="type" data-type="array" {{itemIsChecked task_details.type "call"}}>
+						<label for="form-call">
+							Call
+						</label>
+					</p>
+				</div>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-priority">
+				<p class="input-field col s12">
+					<input type="text" id="field-priority" name="priority" value="{{task_details.priority}}"  required="required">
+					<label class="{{#if task_details.priority}}active{{/if}}" for="field-priority">
+						Priority
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-title">
+				<p class="input-field col s12">
+					<input type="text" id="field-title" name="title" value="{{task_details.title}}"  required="required">
+					<label class="{{#if task_details.title}}active{{/if}}" for="field-title">
+						Title
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-description">
+				<p class="input-field col s12">
+					<textarea id="" class="materialize-textarea " name="Description">{{task_details.Description}}</textarea>
+					<label class="{{#if task_details.Description}}active{{/if}}" for="">
+						Description
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-date">
+				<p class="input-field col s12">
+					<label class="{{#if (formatDate task_details.date 'MM-DD-YYYY')}}active{{/if}}" for="field-date">
+						Created Date
+					</label>
+					<i class="material-icons prefix">
+						event_note
+					</i>
+					<input type="text" id="field-date" name="date" value="{{formatDate task_details.date 'MM-DD-YYYY'}}"  required="required" data-type="date" data-format="MM-DD-YYYY">
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-expected-compltion">
+				<p class="input-field col s12">
+					<label class="{{#if (formatDate task_details.expectedCompltion 'MM-DD-YYYY')}}active{{/if}}" for="field-expected-compltion">
+						Expected Completion
+					</label>
+					<i class="material-icons prefix">
+						event_note
+					</i>
+					<input type="text" id="field-expected-compltion" name="expectedCompltion" value="{{formatDate task_details.expectedCompltion 'MM-DD-YYYY'}}"  required="required" data-type="date" data-format="MM-DD-YYYY">
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-customer-id">
+				<select class="dropdown" name="customerId" >
+					<option value="" disabled selected>						Choose Customer</option>
+					{{#each customer_list_select}}
+					<option value="{{_id}}" {{optionIsSelected ../task_details.customerId _id}}>						{{name}}</option>
+					{{/each}}
+				</select>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-user-id">
+				<select class="dropdown" name="userId" >
+					<option value="" disabled selected>						Choose Assigned To</option>
+					{{#each admin_users}}
+					<option value="{{_id}}" {{optionIsSelected ../task_details.userId _id}}>						{{profile.name}}</option>
+					{{/each}}
+				</select>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="inline fields form-group  field-status">
+				<label for="field-status">
+					Status
+				</label>
+				<div class="field">
+					<p class="ui radio checkbox">
+						<input id="form-new" type="radio" value="new" group="status" name="status" data-type="array" {{itemIsChecked task_details.status "new"}}>
+						<label for="form-new">
+							New
+						</label>
+					</p>
+				</div>
+				<div class="field">
+					<p class="ui radio checkbox">
+						<input id="form-inprogress" type="radio" value="inprogress" group="status" name="status" data-type="array" {{itemIsChecked task_details.status "inprogress"}}>
+						<label for="form-inprogress">
+							In-Progress
+						</label>
+					</p>
+				</div>
+				<div class="field">
+					<p class="ui radio checkbox">
+						<input id="form-hold" type="radio" value="hold" group="status" name="status" data-type="array" {{itemIsChecked task_details.status "hold"}}>
+						<label for="form-hold">
+							Hold
+						</label>
+					</p>
+				</div>
+				<div class="field">
+					<p class="ui radio checkbox">
+						<input id="form-closed" type="radio" value="closed" group="status" name="status" data-type="array" {{itemIsChecked task_details.status "closed"}}>
+						<label for="form-closed">
+							Closed
+						</label>
+					</p>
+				</div>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div>
+				<p class="input-field col s12 submit-div">
+					<button id="form-submit-button" class="btn waves-effect waves-light" type="submit">
+						<i class="material-icons right">
+							check
+						</i>
+						Save
+					</button>
+					<a href="#" id="form-cancel-button" class="btn">
+						Cancel
+					</a>
+				</p>
+			</div>
+		</form>
+	</div>
+</template>
+

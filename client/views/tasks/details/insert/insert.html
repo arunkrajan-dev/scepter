@@ -1,0 +1,68 @@
+<template name="TasksDetailsInsert">
+	<div class="container">
+		<div id="page_menu" class="pull-right">
+		</div>
+	</div>
+	{{> TasksDetailsInsertInsertForm}}
+</template>
+
+<template name="TasksDetailsInsertInsertForm">
+	<div id="tasks-details-insert-insert-form" class="container ">
+		<h4>
+			Add Worklog
+		</h4>
+		<form class="form form_TasksDetailsInsertInsertForm" role="form">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}
+
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-note">
+				<p class="input-field col s12">
+					<textarea id="" class="materialize-textarea " name="note"></textarea>
+					<label class="{{#if ''}}active{{/if}}" for="">
+						Note
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-internal">
+				<p class="col s12">
+					<div class="ui checkbox">
+						<input type="checkbox" id="field-internal" value="" name="internal" data-type="bool" autofocus="autofocus">
+						<label class="{{#if ''}}active{{/if}}" for="field-internal">
+							Internal
+						</label>
+					</div>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div>
+				<p class="input-field col s12 submit-div">
+					<button id="form-submit-button" class="btn waves-effect waves-light" type="submit">
+						<i class="material-icons right">
+							check
+						</i>
+						Save
+					</button>
+					<a href="#" id="form-cancel-button" class="btn">
+						Cancel
+					</a>
+				</p>
+			</div>
+		</form>
+	</div>
+</template>
+

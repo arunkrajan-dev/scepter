@@ -1,0 +1,112 @@
+<template name="TasksDetails">
+	<div class="page-container" id="content">
+		<div class="ui grid" id="title_row">
+			<div class="column">
+				<div id="page_menu" class="pull-right">
+				</div>
+			</div>
+		</div>
+		{{> TasksDetailsDetailsForm}}
+	</div>
+	<div id="subcontent">
+		{{> yield region='TasksDetailsSubcontent'}}
+	</div>
+</template>
+
+<template name="TasksDetailsDetailsForm">
+	<div id="tasks-details-details-form" class="container ">
+		<h4>
+			Details
+		</h4>
+		<form class="form form_TasksDetailsDetailsForm" role="form">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}
+
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-type">
+				<p class="input-field col s12">
+					<input readonly id="field-type" value="{{task_details.type}}" type="text" >
+					<label class="{{#if task_details.type}}active{{/if}}" for="field-type">
+						Type
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-priority">
+				<p class="input-field col s12">
+					<input readonly id="field-priority" value="{{task_details.priority}}" type="text" >
+					<label class="{{#if task_details.priority}}active{{/if}}" for="field-priority">
+						Priority
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-title">
+				<p class="input-field col s12">
+					<input readonly id="field-title" value="{{task_details.title}}" type="text" >
+					<label class="{{#if task_details.title}}active{{/if}}" for="field-title">
+						Title
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-description">
+				<p class="input-field col s12">
+					<input readonly id="field-description" value="{{task_details.Description}}" type="text" >
+					<label class="{{#if task_details.Description}}active{{/if}}" for="field-description">
+						Description
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-date">
+				<p class="input-field col s12">
+					<input readonly id="field-date" value="{{formatDate task_details.date 'MM-DD-YYYY'}}" type="text" >
+					<label class="{{#if (formatDate task_details.date 'MM-DD-YYYY')}}active{{/if}}" for="field-date">
+						Created Date
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-expected-compltion">
+				<p class="input-field col s12">
+					<input readonly id="field-expected-compltion" value="{{formatDate task_details.expectedCompltion 'MM-DD-YYYY'}}" type="text" >
+					<label class="{{#if (formatDate task_details.expectedCompltion 'MM-DD-YYYY')}}active{{/if}}" for="field-expected-compltion">
+						Expected Completion
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-customer-name">
+				<p class="input-field col s12">
+					<input readonly id="field-customer-name" value="{{task_details.customer.name}}" type="text" >
+					<label class="{{#if task_details.customer.name}}active{{/if}}" for="field-customer-name">
+						Customer
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-user-profile-name">
+				<p class="input-field col s12">
+					<input readonly id="field-user-profile-name" value="{{task_details.user.profile.name}}" type="text" >
+					<label class="{{#if task_details.user.profile.name}}active{{/if}}" for="field-user-profile-name">
+						User
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-status">
+				<p class="input-field col s12">
+					<input readonly id="field-status" value="{{task_details.status}}" type="text" >
+					<label class="{{#if task_details.status}}active{{/if}}" for="field-status">
+						Status
+					</label>
+				</p>
+			</div>
+			<div>
+				<p class="input-field col s12 submit-div">
+				</p>
+			</div>
+		</form>
+	</div>
+</template>
+
