@@ -1,4 +1,4 @@
 # scepter
 
-##### Desclimer
-> This meteor application is created only for Educational/Learing purpose. 
+##### Disclaimer
+> This meteor application is created only for Educational/Learning purpose. 
